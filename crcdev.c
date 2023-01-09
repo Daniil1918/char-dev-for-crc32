@@ -6,7 +6,6 @@
 #include <linux/crc32.h>
 #include <linux/fs.h>
 
-
 #define DEV_NAME "crcdev"
 #define CRC_DEVICES 1
 #define CRC_MAJOR 127
@@ -65,9 +64,8 @@ static ssize_t crcdev_write(struct file *file, const char __user *buf,
 	char *temp_buf = NULL;
 	crc_t *temp_crc = file->private_data;
 
-	if (count <= 0) {
+	if (count <= 0)
 		return -EINVAL;
-	}
 
 	temp_buf = kmalloc(count, GFP_KERNEL);
 	if (!temp_buf) {
